@@ -1,0 +1,22 @@
+# CASO 2 - orquestador contra la MariaDB local de la misma maquina.
+# Instalar en /etc/systemd/system/orq-motor.service
+#
+# User=root porque el puerto 80 es privilegiado.
+# Requires=mariadb.service para que el motor este arriba antes que el app.
+#
+# OJO: los tres casos usan el puerto 80, solo puede haber uno activo:
+#   sudo systemctl stop orq-remoto && sudo systemctl start orq-motor
+
+[Unit]
+Description=Orquestador IoT - caso 2 (motor local MariaDB)
+After=network.target mariadb.service
+Requires=mariadb.service
+
+[Service]
+User=root
+WorkingDirectory=/home/ubuntu/iot/motor
+ExecStart=/home/ubuntu/iot/motor/venv/bin/python app.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

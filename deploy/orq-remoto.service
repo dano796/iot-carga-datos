@@ -1,0 +1,20 @@
+# CASO 3 - orquestador contra el RDS remoto.
+# Instalar en /etc/systemd/system/orq-remoto.service
+#
+# No lleva Requires=mariadb.service: el motor ya no vive en esta maquina.
+#
+# OJO: los tres casos usan el puerto 80, solo puede haber uno activo:
+#   sudo systemctl stop orq-motor && sudo systemctl start orq-remoto
+
+[Unit]
+Description=Orquestador IoT - caso 3 (motor externo RDS)
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/home/ubuntu/iot/remoto
+ExecStart=/home/ubuntu/iot/remoto/venv/bin/python app.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
