@@ -4,7 +4,7 @@
 # User=root porque el puerto 80 es privilegiado.
 # Requires=mariadb.service para que el motor este arriba antes que el app.
 #
-# OJO: los tres casos usan el puerto 80, solo puede haber uno activo:
+# OJO: los cuatro casos usan el puerto 80, solo puede haber uno activo:
 #   sudo systemctl stop orq-remoto && sudo systemctl start orq-motor
 
 [Unit]

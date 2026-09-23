@@ -5,7 +5,7 @@
 # No lleva Requires=mariadb.service: no hay motor de base de datos, solo un
 # archivo .db en el mismo directorio de la app.
 #
-# OJO: los tres casos usan el puerto 80, solo puede haber uno activo:
+# OJO: los cuatro casos usan el puerto 80, solo puede haber uno activo:
 #   sudo systemctl stop orq-remoto && sudo systemctl start orq-local
 
 [Unit]

@@ -3,7 +3,7 @@
 #
 # No lleva Requires=mariadb.service: el motor ya no vive en esta maquina.
 #
-# OJO: los tres casos usan el puerto 80, solo puede haber uno activo:
+# OJO: los cuatro casos usan el puerto 80, solo puede haber uno activo:
 #   sudo systemctl stop orq-motor && sudo systemctl start orq-remoto
 
 [Unit]

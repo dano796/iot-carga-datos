@@ -1,6 +1,6 @@
 # Carga de Datos IoT
 
-Ejercicio de Carga de Datos del curso Internet de las Cosas. Se compone de una placa **LilyGO TTGO T-Beam** que lee el sensor y envía la trama a un **orquestador Flask (servidor)** por HTTP; el orquestador es el único que escribe en la base de datos; persiste la trama según sea el caso de ejemplo.
+Ejercicio de Carga de Datos del curso Internet de las Cosas. Se hace uso de una placa **LilyGO TTGO T-Beam** que lee el sensor y envía la trama a un **orquestador Flask (servidor)** por HTTP; el orquestador es el único que escribe en la base de datos; persiste la trama según sea el caso de ejemplo.
 
 ```
    T-Beam  --WiFi / HTTP POST-->  Orquesdador (EC2)  -->  base de datos (persistencia)
@@ -8,7 +8,7 @@ Ejercicio de Carga de Datos del curso Internet de las Cosas. Se compone de una p
 
 La transmisión de la trama es igual. El foco del ejercicio está en cambiar **solo el último tramo**, es decir, la manera en como se persiste:
 
-| Caso | Persistencia | Lugar |
+| Caso | Persistencia | Archivo |
 |------|--------------------|--------|
 | 1 | Archivo local, SQLite | [`caso1-archivo-local/app.py`](caso1-archivo-local/app.py) |
 | 2 | Motor local, MariaDB en la misma máquina | [`caso2-motor-local/app_motorlocal.py`](caso2-motor-local/app_motorlocal.py) |
