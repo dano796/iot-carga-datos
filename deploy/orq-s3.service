@@ -1,0 +1,22 @@
+# CASO 4 - orquestador contra S3 (arn:aws:s3:::iot-bucket-186841).
+# Instalar en /etc/systemd/system/orq-s3.service
+#
+# User=root porque el puerto 80 es privilegiado.
+# boto3 toma las credenciales del rol IAM de la instancia EC2 (no hay
+# access key ni secret en el codigo ni en esta unidad).
+#
+# OJO: los cuatro casos usan el puerto 80, solo puede haber uno activo:
+#   sudo systemctl stop orq-remoto && sudo systemctl start orq-s3
+
+[Unit]
+Description=Orquestador IoT - caso 4 (S3)
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/home/ubuntu/iot/s3
+ExecStart=/home/ubuntu/iot/s3/venv/bin/python app.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
